@@ -1,0 +1,1 @@
+screen -d -m node-red-pi --max-old-space-size=256 /home/pi/BACKOFEN/flows_BACKOFEN.json &

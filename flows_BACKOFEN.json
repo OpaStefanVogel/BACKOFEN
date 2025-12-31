@@ -1,0 +1,158 @@
+[
+    {
+        "id": "76328c02d9bcbc76",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7154db832302a15e",
+        "type": "websocket-listener",
+        "path": "/ws/backofen",
+        "wholemsg": "false"
+    },
+    {
+        "id": "9cc48574b452664a",
+        "type": "websocket in",
+        "z": "76328c02d9bcbc76",
+        "name": "",
+        "server": "7154db832302a15e",
+        "client": "",
+        "x": 190,
+        "y": 160,
+        "wires": [
+            [
+                "2080bb46717de7b7"
+            ]
+        ]
+    },
+    {
+        "id": "81b359da17f9e8ae",
+        "type": "rpi-gpio out",
+        "z": "76328c02d9bcbc76",
+        "name": "E/A",
+        "pin": "2",
+        "set": true,
+        "level": "1",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 710,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "99f64184d7226858",
+        "type": "delay",
+        "z": "76328c02d9bcbc76",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "0.5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 250,
+        "y": 300,
+        "wires": [
+            [
+                "bacce5b96539fbd2"
+            ]
+        ]
+    },
+    {
+        "id": "2080bb46717de7b7",
+        "type": "template",
+        "z": "76328c02d9bcbc76",
+        "name": "0",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "0",
+        "output": "str",
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "99f64184d7226858",
+                "81b359da17f9e8ae",
+                "11601bb6918f7e9c"
+            ]
+        ]
+    },
+    {
+        "id": "bacce5b96539fbd2",
+        "type": "template",
+        "z": "76328c02d9bcbc76",
+        "name": "1",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "1",
+        "output": "str",
+        "x": 430,
+        "y": 300,
+        "wires": [
+            [
+                "81b359da17f9e8ae",
+                "11601bb6918f7e9c"
+            ]
+        ]
+    },
+    {
+        "id": "6fdea779a4229f47",
+        "type": "inject",
+        "z": "76328c02d9bcbc76",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 220,
+        "wires": [
+            [
+                "2080bb46717de7b7"
+            ]
+        ]
+    },
+    {
+        "id": "11601bb6918f7e9c",
+        "type": "debug",
+        "z": "76328c02d9bcbc76",
+        "name": "PIN3 GPIO02 E/A",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 300,
+        "wires": []
+    }
+]
