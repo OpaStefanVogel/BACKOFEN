@@ -203,5 +203,163 @@
                 "715bc1f0675ef74b"
             ]
         ]
+    },
+    {
+        "id": "dd695bfc1357145f",
+        "type": "daemon",
+        "z": "76328c02d9bcbc76",
+        "name": "",
+        "command": "bash",
+        "args": "",
+        "autorun": true,
+        "cr": true,
+        "redo": true,
+        "op": "string",
+        "closer": "SIGKILL",
+        "x": 570,
+        "y": 420,
+        "wires": [
+            [
+                "d112d926153e58f7"
+            ],
+            [
+                "d112d926153e58f7"
+            ],
+            [
+                "d112d926153e58f7"
+            ]
+        ]
+    },
+    {
+        "id": "cacc75ba3635aca9",
+        "type": "inject",
+        "z": "76328c02d9bcbc76",
+        "name": "ls",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "ls -al",
+        "payloadType": "str",
+        "x": 150,
+        "y": 420,
+        "wires": [
+            [
+                "dd695bfc1357145f"
+            ]
+        ]
+    },
+    {
+        "id": "58c246a396b217fd",
+        "type": "inject",
+        "z": "76328c02d9bcbc76",
+        "name": "sudo nmcli radio wifi on",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "10",
+        "topic": "",
+        "payload": "sudo nmcli radio wifi on",
+        "payloadType": "str",
+        "x": 210,
+        "y": 460,
+        "wires": [
+            [
+                "dd695bfc1357145f"
+            ]
+        ]
+    },
+    {
+        "id": "4068e7d2e00e293f",
+        "type": "inject",
+        "z": "76328c02d9bcbc76",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "ip a",
+        "payloadType": "str",
+        "x": 150,
+        "y": 560,
+        "wires": [
+            [
+                "dd695bfc1357145f"
+            ]
+        ]
+    },
+    {
+        "id": "d112d926153e58f7",
+        "type": "debug",
+        "z": "76328c02d9bcbc76",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "f24b8def6713f3b6",
+        "type": "inject",
+        "z": "76328c02d9bcbc76",
+        "name": "sudo nmcli radio wifi off",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "10",
+        "topic": "",
+        "payload": "sudo nmcli radio wifi off",
+        "payloadType": "str",
+        "x": 200,
+        "y": 500,
+        "wires": [
+            [
+                "dd695bfc1357145f"
+            ]
+        ]
     }
 ]
